@@ -5,7 +5,8 @@ import (
 	"log"
 )
 
-type SimpleEngine struct{}
+type SimpleEngine struct {
+}
 
 func (e SimpleEngine) Run(seeds ...Request) {
 	var requests []Request
