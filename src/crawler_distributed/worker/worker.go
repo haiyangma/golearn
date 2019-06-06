@@ -2,6 +2,7 @@ package worker
 
 import (
 	"crawler/engine"
+	keepParser "crawler/keep/parser"
 	"crawler/zhenai/parser"
 	"crawler_distributed/config"
 
@@ -91,9 +92,16 @@ func DeserializeParser(p *SerializedParser) (engine.Parser, error) {
 		}
 	case config.NilParser:
 		return engine.NilParser{}, nil
+	case config.ParseHotPost:
+		return keepParser.NewHotPostParser(),nil
+	case config.ParseExplorePost:
+		return keepParser.NewExplorePostParser(),nil
+	case config.ParseExplorePostList:
+		return engine.NewFuncParser(
+			keepParser.ParseExplorePostList,
+			config.ParseExplorePostList), nil
 	default:
 		return nil, errors.New("unknow parser name")
 	}
-	return nil, errors.New("unknow parser name")
 }
 

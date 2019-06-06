@@ -13,7 +13,7 @@ func CreateProcessor(clientChan chan *rpc.Client) (engine.Processor, error) {
 		client := <-clientChan
 		log.Printf("Fetching %s \n", r.Url)
 		var result worker.ParseResult
-		err := client.Call(config.CrawlServiceRpc, worker.Serializ eRequest(r), &result)
+		err := client.Call(config.CrawlServiceRpc, worker.SerializeRequest(r), &result)
 		clientChan <- client
 		if err != nil {
 			log.Printf("Fetcher :error fetching url %s: %v", r.Url, err)

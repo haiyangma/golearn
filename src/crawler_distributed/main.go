@@ -2,8 +2,9 @@ package main
 
 import (
 	"crawler/engine"
+	keepConfig "crawler/keep/config"
+	"crawler/keep/parser"
 	"crawler/scheduler"
-	"crawler/zhenai/parser"
 	"crawler_distributed/config"
 	itemSaver "crawler_distributed/persist/client"
 	"crawler_distributed/rpcsupport"
@@ -33,13 +34,13 @@ func main() {
 	}
 	e := engine.ConcurrentEngine{
 		Scheduler:        &scheduler.QueneScheduler{},
-		WorkerCount:      100,
+		WorkerCount:      10,
 		SaverChan:        itemChan,
 		RequestProcessor: processor,
 	}
 	e.Run(engine.Request{
-		Url:    "http://www.zhenai.com/zhenghun", //http://www.zhenai.com/zhenghun",
-		Parser: engine.NewFuncParser(parser.ParseCityList, config.ParseCityList),
+		Url:    keepConfig.KEEP_HOST+keepConfig.KEEP_EXPLORE_URI, //http://www.zhenai.com/zhenghun",
+		Parser: engine.NewFuncParser(parser.ParseExplorePostList,"ParseExplorePostList"),
 	})
 
 }

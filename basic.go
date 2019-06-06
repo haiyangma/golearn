@@ -65,6 +65,9 @@ func enumsTest() {
 	fmt.Println(cpp, java, python, golang)
 }
 
+
+
+
 func main() {
 	//fmt.Println("Hello world !")
 	//variableZeroValue()
@@ -75,5 +78,11 @@ func main() {
 	//fmt.Println("\n")
 	//triangle()
 	//consts()
-	//enumsTest()
+	enumsTest()
+
+	//a:=10
+	//b:=20
+	//func(a int,b int) {
+	//	fmt.Println(a,b)
+	//}(a,b)
 }

@@ -17,8 +17,9 @@ var port = flag.Int("port", 0, "the port for itemsaver to listen on")
 func main() {
 	flag.Parse()
 	if *port == 0 {
-		fmt.Println("must specify a port")
-		return
+		//fmt.Println("must specify a port")
+		//return
+		*port = 8888
 	}
 	serveRpc(fmt.Sprintf(":%d", *port), config.ElasticIndex)
 }
@@ -34,4 +35,5 @@ func serveRpc(host, index string) error {
 		Client: Client,
 		Index:  index,
 	})
+
 }
