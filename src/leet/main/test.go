@@ -10,11 +10,8 @@ func main() {
 	//l1 := leet.MakeChain(a1)
 	//l2 := leet.MakeChain(a2)
 	//leet.AddTwoNumbers(l1,l2)
-	s := "1231234545345"
-	//for _,v := range s {
-	//	println(fmt.Sprintf("%c",v))
-	//}
-	leet.LengthOfLongestSubstring(s)
+	s := "LEETCODEISHIRING"
+	println(leet.Convert(s,3))
 }
 
 
